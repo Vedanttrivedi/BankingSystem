@@ -63,7 +63,11 @@ public class SignUp {
         points = 500000;
 
     }
-
+    public SignUp(String name,String password,String fullname){
+        this.fullname = fullname;
+        this.username = name;
+        this.password = password;
+    }
     public void forgetPassword(HashMap<String,SignUp> users){
         Scanner scan = new Scanner(System.in);
         System.out.println("\t\tPassword Reset Form!!");
