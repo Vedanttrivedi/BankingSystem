@@ -89,14 +89,18 @@ public class HomeScreen {
                                 boolean rightName = (acName.equals(db.getDb().get(name).getAccountHolderName()));
 
                                 if(rightName && rightAccountNumber){
-                                    //details are valid show user dashboard
 
+                                    //details are valid show user dashboard
+                                    DashBoard dashboard = new DashBoard(db.getDb().get(name));
                                 }else{
                                     //invalid details
+                                    System.out.println("Your account number and account holder name does not match!");
                                 }
                             }else{
                                 //user is registering first time in the bank
-                                
+                                SignUp temp = new SignUp(register.getUsername(),register.getPassword(),register.getFullname());
+                                db.addUser(temp);
+
                             }
                         }else{
                             System.out.println("Invalid Details");
@@ -118,6 +122,6 @@ public class HomeScreen {
                     break;
             }
         }
-        System.out.println("System is off!");
+        System.out.println("Hey Thank you for visiting to bank!");
     }
 }
