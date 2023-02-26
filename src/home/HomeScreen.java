@@ -5,6 +5,7 @@ import bankOperations.Bank;
 import bankOperations.BankDB;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Scanner;
 import java.io.Console;
 public class HomeScreen {
@@ -19,7 +20,7 @@ public class HomeScreen {
         SignIn login=null;
         while(isSystemOn)
         {
-            System.out.println("Home->>Press 1 for Registration,\t 2 for Login,\t 3 for Forget password,\t  0 to exit the application");
+            System.out.println("Home->>Press 1 for Registration,\t 2 for Login,\t 3 for Forget password,\t 0 to exit the application");
             System.out.print("Enter choice :");
             int choice = sc.nextInt();
             switch (choice){
@@ -31,7 +32,7 @@ public class HomeScreen {
                     //check if user exists in hashmap of users
                     if(users.containsKey(tempUsername))
                     {
-                        System.out.println("Username already exists!cannot create account!");
+                        System.out.println("Username already exists! Cannot create account!");
                     }
                     else
                     {
@@ -80,13 +81,13 @@ public class HomeScreen {
                             if(db.getDb().containsKey(name)){
                                 //user is loggin  in bank 2nd time so user has account number and name
                                 System.out.println("Enter Account Holder Name :");
-                                String acName = sc.nextLine();
+                                String acName = sc.nextLine().toLowerCase();
                                 if(acName.length()==0)
-                                    acName = sc.nextLine();
+                                    acName = sc.nextLine().toLowerCase();
                                 System.out.println("Enter Account Number : ");
                                 long ans = sc.nextLong();
                                 boolean rightAccountNumber = (ans==db.getDb().get(name).getAccountNumber());
-                                boolean rightName = (acName.equals(db.getDb().get(name).getAccountHolderName()));
+                                boolean rightName = (acName.equals(db.getDb().get(name).getAccountHolderName().toLowerCase()));
 
                                 if(rightName && rightAccountNumber){
 
@@ -122,6 +123,6 @@ public class HomeScreen {
                     break;
             }
         }
-        System.out.println("Hey Thank you for visiting to bank!");
+        System.out.println("Hey, Thank you for visiting to bank!");
     }
 }

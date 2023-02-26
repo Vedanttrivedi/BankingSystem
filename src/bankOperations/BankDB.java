@@ -28,6 +28,7 @@ public class BankDB {
         if(acType==1){
             //it is saving account ask for time period as well
             System.out.println("For Many Years You want Save your money in the bank  :");
+
             years = scan.nextInt();
         }
         long number = assignAccountNumber();
